@@ -5,7 +5,6 @@ public class PlayerManager : MonoBehaviour
 {
     private const float ForwardDirectionDegrees = 0f;
 
-    //public PlayerConfig playerConfig;
     [SerializeField]
     private float speed = 2f;
     [SerializeField]
@@ -14,13 +13,10 @@ public class PlayerManager : MonoBehaviour
     [Range(45f, 90f)]
     private float maxRotationDegrees = 60f;
 
-    //private PlayerInput playerInput;
     private PlayerInputActions playerInputActions;
 
-    // Start is called before the first frame update
     private void Awake()
     {
-        //playerInput = GetComponent<PlayerInput>();
         playerInputActions = new PlayerInputActions();
         playerInputActions.Player.Enable();
     }
@@ -52,7 +48,7 @@ public class PlayerManager : MonoBehaviour
     private float GetTargetAngle(float moveDirection)
     {
         float targetAngle = transform.rotation.eulerAngles.z;
-        
+
         targetAngle = targetAngle > 180f ? targetAngle - 360f : targetAngle;
 
         if (moveDirection < 0f && targetAngle > ForwardDirectionDegrees - maxRotationDegrees)
