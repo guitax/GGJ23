@@ -1,8 +1,9 @@
+using System;
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    private const float ForwardDirectionDegrees = 180f;
+    private const float ForwardDirectionDegrees = 0f;
 
     //public PlayerConfig playerConfig;
     [SerializeField]
@@ -45,12 +46,14 @@ public class PlayerManager : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 0, targetAngle);
         }
 
-        transform.position += transform.up * speed * Time.deltaTime;
+        transform.position -= transform.up * speed * Time.deltaTime;
     }
 
     private float GetTargetAngle(float moveDirection)
     {
         float targetAngle = transform.rotation.eulerAngles.z;
+        
+        targetAngle = targetAngle > 180f ? targetAngle - 360f : targetAngle;
 
         if (moveDirection < 0f && targetAngle > ForwardDirectionDegrees - maxRotationDegrees)
         {
