@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class MainGameManager : MonoBehaviour
 {
@@ -8,7 +9,6 @@ public class MainGameManager : MonoBehaviour
     public GameConfig gameConfig;
     public AudioSource audio_backgroundMusic;
 
-    // Start is called before the first frame update
     private void Awake()
     {
         Debug.Log("Awake");
@@ -17,20 +17,29 @@ public class MainGameManager : MonoBehaviour
         GameRandom.Core = new DefaultRandom();
     }
 
+
     private IEnumerator Start()
     {
         Debug.Log("Start");
-        audio_backgroundMusic.Play();
+        //audio_backgroundMusic.Play();
         yield return null;
     }
 
-    // Update is called once per frame
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Keyboard.current.escapeKey.wasPressedThisFrame)
         {
             Debug.Log("Quit");
-            Application.Quit();
+            Quit();
         }
+    }
+
+    private static void Quit()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
     }
 }

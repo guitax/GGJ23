@@ -3,7 +3,9 @@ guid: d83c04c7f60265f4e8c71073f90b62d7
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - gameConfig: {fileID: 11400000, guid: 35f17065890d99c4cb7c42076903413e, type: 2}
+  - audio_backgroundMusic: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
