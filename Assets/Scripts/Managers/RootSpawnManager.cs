@@ -28,5 +28,5 @@ public class RootSpawnManager : MonoBehaviour
 
             yield return new WaitForSeconds(1f / ClonesPerSecond);
         }
-    }
+    }   
 }
