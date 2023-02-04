@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class MyTrailRenderer : MonoBehaviour
 {
@@ -9,6 +7,8 @@ public class MyTrailRenderer : MonoBehaviour
     public int ClonesPerSecond = 10;
     [SerializeField]
     private GameObject clone;
+    [SerializeField]
+    private Transform parent;
 
     void Start()
     {
@@ -19,8 +19,9 @@ public class MyTrailRenderer : MonoBehaviour
     {
         for (;;) //while(true)
         {
-            var spawnedClone = Instantiate(clone);
+            var spawnedClone = Instantiate(clone, parent);
             spawnedClone.transform.position = transform.position;
+            spawnedClone.transform.rotation = transform.rotation;
             spawnedClone.transform.localScale = transform.localScale;
             // SpriteRenderer cloneRenderer = clone.AddComponent<SpriteRenderer>();
             // cloneRenderer.sortingOrder = this.clone.sortingOrder - 1;
