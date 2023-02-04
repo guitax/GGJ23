@@ -1,32 +1,65 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class RootSpawnManager : MonoBehaviour
 {
-    public GameConfig gameConfig;
-    public int ClonesPerSecond = 10;
     [SerializeField]
-    private GameObject clone;
+    private GameConfig gameConfig;
+    [SerializeField]
+    private int ClonesPerSecond = 10;
     [SerializeField]
     private Transform parent;
+    [SerializeField]
+    private PooledGameObject spawnPrefab;
 
-    void Start()
+    private IObjectPool<PooledGameObject> rootSpawnPool;
+
+    private void Awake()
+    {
+        rootSpawnPool = new ObjectPool<PooledGameObject>(
+            CreatePooledItem,
+            OnTakeFromPool,
+            OnReturnedToPool,
+            OnDestroyPoolObject);
+    }
+
+    private void Start()
     {
         StartCoroutine(Trail());
     }
 
-    IEnumerator Trail()
+    private IEnumerator Trail()
     {
-        for (;;) //while(true)
+        for (; ; ) //while(true)
         {
-            var spawnedClone = Instantiate(clone, parent);
-            spawnedClone.transform.position = transform.position;
-            spawnedClone.transform.rotation = transform.rotation;
-            spawnedClone.transform.localScale = transform.localScale;
-            // SpriteRenderer cloneRenderer = clone.AddComponent<SpriteRenderer>();
-            // cloneRenderer.sortingOrder = this.clone.sortingOrder - 1;
+            rootSpawnPool.Get();
 
             yield return new WaitForSeconds(1f / ClonesPerSecond);
         }
+    }
+
+    private PooledGameObject CreatePooledItem()
+    {
+        PooledGameObject spawned = Instantiate(spawnPrefab, parent);
+        spawned.SetPool(rootSpawnPool);
+        return spawned;
+    }
+
+    private void OnTakeFromPool(PooledGameObject obj)
+    {
+        obj.transform.SetPositionAndRotation(parent.position, parent.rotation);
+        obj.transform.localScale = transform.localScale;
+        obj.gameObject.SetActive(true);
+    }
+
+    private void OnReturnedToPool(PooledGameObject obj)
+    {
+        obj.gameObject.SetActive(false);
+    }
+
+    private void OnDestroyPoolObject(PooledGameObject obj)
+    {
+        Destroy(obj);
     }
 }
