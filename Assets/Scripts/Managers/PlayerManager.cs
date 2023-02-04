@@ -12,7 +12,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField]
     [Range(45f, 75f)]
     private float maxRotationDegrees = 60f;
-    private const float BoundaryOffSet = 0.01f;
+    private const float BoundaryOffSet = 0.02f;
 
     private PlayerInputActions playerInputActions;
     private Camera mainCamera;
