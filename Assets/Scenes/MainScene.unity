@@ -413,7 +413,7 @@ PrefabInstance:
     - target: {fileID: 2488502378607328467, guid: a777996ec05c9714e8bf2727eb03706e, type: 3}
       propertyPath: m_Texture
       value: 
-      objectReference: {fileID: 2800000, guid: 88509155732ad4093bfe6a211ed2f107, type: 3}
+      objectReference: {fileID: 2800000, guid: ee850abe1a2374a11a1c55ecfbfbaebc, type: 3}
     - target: {fileID: 2488502378607328467, guid: a777996ec05c9714e8bf2727eb03706e, type: 3}
       propertyPath: m_Maskable
       value: 1
