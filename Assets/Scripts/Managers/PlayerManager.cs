@@ -12,7 +12,6 @@ public class PlayerManager : MonoBehaviour
     [SerializeField]
     [Range(45f, 75f)]
     private float maxRotationDegrees = 60f;
-    private const float BoundaryOffSet = 0.02f;
 
     private PlayerInputActions playerInputActions;
     private Camera mainCamera;
@@ -59,7 +58,7 @@ public class PlayerManager : MonoBehaviour
         var transformedVector = currentPosition - gameConfig.speed * Time.deltaTime * transform.up;
         var screenVector = mainCamera.WorldToViewportPoint(transformedVector);
 
-        if (screenVector.x - BoundaryOffSet < 0f || screenVector.x + BoundaryOffSet > 1f )
+        if (screenVector.x - gameConfig.boundaryOffSet < 0f || screenVector.x + gameConfig.boundaryOffSet > 1f )
             return;
 
         transform.position = new Vector2(transformedVector.x, currentPosition.y);
