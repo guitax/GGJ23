@@ -5,6 +5,11 @@ public class PooledGameObject : MonoBehaviour
 {
     private IObjectPool<PooledGameObject> rootSpawnPool;
 
+    private void Awake()
+    {
+        gameObject.SetActive(false);
+    }
+
     public void SetPool(IObjectPool<PooledGameObject> spawnPool)
     {
         rootSpawnPool = spawnPool;

@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3967246025336974439}
+  - component: {fileID: -5341537577567467955}
   - component: {fileID: 3089667448691944071}
   m_Layer: 0
   m_Name: RootSpawn
@@ -32,6 +33,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-5341537577567467955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3846214295232890617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fad2f403775dd4418630c6560f1d30a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &3089667448691944071
 SpriteRenderer:
   m_ObjectHideFlags: 0

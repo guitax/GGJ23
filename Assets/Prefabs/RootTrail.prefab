@@ -47,8 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameConfig: {fileID: 11400000, guid: 35f17065890d99c4cb7c42076903413e, type: 2}
   ClonesPerSecond: 5
-  clone: {fileID: 3846214295232890617, guid: 74423497ff7c24886b156383b5504e65, type: 3}
   parent: {fileID: 0}
+  spawnPrefab: {fileID: -5341537577567467955, guid: 74423497ff7c24886b156383b5504e65, type: 3}
 --- !u!212 &3089667448691944071
 SpriteRenderer:
   m_ObjectHideFlags: 0

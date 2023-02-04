@@ -9,7 +9,7 @@ public class RootSpawnManager : MonoBehaviour
     [SerializeField]
     private int ClonesPerSecond = 10;
     [SerializeField]
-    private Transform parent;
+    private Transform spawnedParent;
     [SerializeField]
     private PooledGameObject spawnPrefab;
 
@@ -41,15 +41,14 @@ public class RootSpawnManager : MonoBehaviour
 
     private PooledGameObject CreatePooledItem()
     {
-        PooledGameObject spawned = Instantiate(spawnPrefab, parent);
+        PooledGameObject spawned = Instantiate(spawnPrefab, spawnedParent);
         spawned.SetPool(rootSpawnPool);
         return spawned;
     }
 
     private void OnTakeFromPool(PooledGameObject obj)
     {
-        obj.transform.SetPositionAndRotation(parent.position, parent.rotation);
-        obj.transform.localScale = transform.localScale;
+        obj.transform.SetPositionAndRotation(transform.position, transform.rotation);
         obj.gameObject.SetActive(true);
     }
 
