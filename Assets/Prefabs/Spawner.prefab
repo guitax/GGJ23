@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &37898564
 MonoBehaviour:
@@ -44,8 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b68be312f1d4b83a15dcccd339e2dd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  badPrefabs:
-  - {fileID: 2905644941811617153, guid: cf22145bdecad47308e75f1c8e4a7c0b, type: 3}
-  - {fileID: 4028291968859080802, guid: a8f87e08277db44baa72eb2ea64e93a7, type: 3}
-  goodPrefabs: []
-  spawnParent: {fileID: 0}
+  gameConfig: {fileID: 11400000, guid: 35f17065890d99c4cb7c42076903413e, type: 2}
+  spawnedParent: {fileID: 0}
+  powerDownPrefabs:
+  - {fileID: 5346125773669568028, guid: cf22145bdecad47308e75f1c8e4a7c0b, type: 3}
+  - {fileID: -1150544329426762646, guid: a8f87e08277db44baa72eb2ea64e93a7, type: 3}
+  powerUpPrefabs:
+  - {fileID: 5346125773669568028, guid: cf22145bdecad47308e75f1c8e4a7c0b, type: 3}
