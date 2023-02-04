@@ -14,6 +14,6 @@ public class CanvasBackgroundManager : MonoBehaviour
 
     private void Update()
     {
-        rawImage.uvRect = new Rect(rawImage.uvRect.position + Vector2.up * speed * Time.deltaTime, rawImage.uvRect.size);
+        rawImage.uvRect = new Rect(rawImage.uvRect.position + Vector2.down * speed * Time.deltaTime, rawImage.uvRect.size);
     }
 }
