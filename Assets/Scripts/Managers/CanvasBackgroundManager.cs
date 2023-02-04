@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BackgroundManager : MonoBehaviour
+public class CanvasBackgroundManager : MonoBehaviour
 {
     private RawImage rawImage;
     [SerializeField]
