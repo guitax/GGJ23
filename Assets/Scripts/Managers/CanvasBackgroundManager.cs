@@ -5,8 +5,8 @@ public class CanvasBackgroundManager : MonoBehaviour
 {
     private RawImage rawImage;
     [SerializeField]
-    private float speed = 0.05f;
-
+    private GameConfig gameConfig;
+   
     private void Awake()
     {
         rawImage = GetComponent<RawImage>();
@@ -14,6 +14,6 @@ public class CanvasBackgroundManager : MonoBehaviour
 
     private void Update()
     {
-        rawImage.uvRect = new Rect(rawImage.uvRect.position + Vector2.down * speed * Time.deltaTime, rawImage.uvRect.size);
+        rawImage.uvRect = new Rect(rawImage.uvRect.position + Vector2.down * gameConfig.backgroundSpeed * Time.deltaTime, rawImage.uvRect.size);
     }
 }
