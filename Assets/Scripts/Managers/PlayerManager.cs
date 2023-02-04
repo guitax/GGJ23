@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
@@ -16,6 +17,10 @@ public class PlayerManager : MonoBehaviour
     private PlayerInputActions playerInputActions;
     private Camera mainCamera;
 
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        Debug.Log("Collision");
+    }
 
     private void Start()
     {
