@@ -11,26 +11,26 @@ public class SurfaceManager : MonoBehaviour
     private float upperBound = 1.0f;
 
     private Camera mainCamera;
-
     private List<GameObject> greens;
 
     private void Start()
     {
         mainCamera = Camera.main;
         greens = createGreens();
+        
+        PlayerManager.SurfacePowerDown += PowerDownEvent;
+        PlayerManager.SurfacePowerUp += PowerUpEvent;
     }
-    
-    public void PowerUpEvent(float aNumber)
+
+    private void PowerUpEvent()
     {
         var firstActive = greens.First(g => g.activeSelf);
-
         firstActive.SetActive(false);
     }
 
-    public void PowerDownEvent(float aNumber)
+    private void PowerDownEvent()
     {
         var firstActive = greens.First(g => !g.activeSelf);
-
         firstActive.SetActive(true);
     }
     

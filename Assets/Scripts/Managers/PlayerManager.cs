@@ -15,6 +15,16 @@ public class PlayerManager : MonoBehaviour
 
     private PlayerInputActions playerInputActions;
     private Camera mainCamera;
+    
+    public delegate void HealthEvent();
+
+    public static HealthEvent SurfacePowerUp;
+    public static HealthEvent SurfacePowerDown;
+    public static HealthEvent SurfaceDeath;
+    
+    public static HealthEvent AudioPowerUp;
+    public static HealthEvent AudioPowerDown;
+    public static HealthEvent AudioDeath;
 
     private void Awake()
     {
@@ -40,7 +50,23 @@ public class PlayerManager : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collider)
     {
         Debug.Log("Collision");
-        collider.SendMessage($"{collider.name}Event");
+
+        switch (collider.name)
+        {
+            case "PowerUp":
+                SurfacePowerUp?.Invoke();
+                AudioPowerUp?.Invoke();
+                break;
+            case "PowerDown":
+                SurfacePowerDown?.Invoke();
+                AudioPowerDown?.Invoke();
+                break;
+            default:
+                SurfaceDeath?.Invoke();
+                AudioDeath?.Invoke();
+                break;
+        }
+        
     }
 
     private void Move()
