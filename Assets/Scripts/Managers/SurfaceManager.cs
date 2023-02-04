@@ -15,18 +15,19 @@ public class SurfaceManager : MonoBehaviour
         mainCamera = Camera.main;
     }
 
-    
+
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        var currentPosition = transform.position;
-        var transformedVector = currentPosition + gameConfig.surfaceSpeed * Time.deltaTime * transform.up;
+        Vector3 transformedVector = transform.position + (gameConfig.surfaceSpeed * Time.deltaTime * transform.up);
 
-        var screenVector = mainCamera.WorldToViewportPoint(transformedVector);
+        Vector3 screenVector = mainCamera.WorldToViewportPoint(transformedVector);
 
-        if (screenVector.y  > upperBound)
+        if (screenVector.y > upperBound)
+        {
             return;
-            
-        transform.position = new Vector2(currentPosition.x, transformedVector.y);
+        }
+
+        transform.position = new Vector3(transform.position.x, transformedVector.y, transform.position.z);
     }
 }

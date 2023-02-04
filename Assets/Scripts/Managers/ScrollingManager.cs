@@ -8,6 +8,6 @@ public class ScrollingManager : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        transform.position = new Vector2(0f, transform.position.y + (gameConfig.speed * Time.deltaTime));
+        transform.position = new Vector3(0f, transform.position.y + (gameConfig.speed * Time.deltaTime), transform.position.z);
     }
 }
