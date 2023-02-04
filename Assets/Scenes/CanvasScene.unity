@@ -248,9 +248,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 992053607}
-  - component: {fileID: 992053610}
   - component: {fileID: 992053609}
   - component: {fileID: 992053608}
+  - component: {fileID: 992053611}
   m_Layer: 5
   m_Name: surface
   m_TagString: Untagged
@@ -313,7 +313,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 992053606}
   m_CullTransparentMesh: 1
---- !u!114 &992053610
+--- !u!114 &992053611
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -322,10 +322,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 992053606}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39a5dc119d5640f42bcb98d3962d95e6, type: 3}
+  m_Script: {fileID: 11500000, guid: e2d80d0f777f549d0b5711f0062f7030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.05
+  gameConfig: {fileID: 11400000, guid: 35f17065890d99c4cb7c42076903413e, type: 2}
 --- !u!20 &1965645000 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 2661587081712038146, guid: cc71b304a436c67429e5c2bf00b21e71, type: 3}
@@ -398,7 +398,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2488502378607328477, guid: a777996ec05c9714e8bf2727eb03706e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2488502379635761529, guid: a777996ec05c9714e8bf2727eb03706e, type: 3}
       propertyPath: m_Name
@@ -496,7 +496,7 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2488502379635761533, guid: a777996ec05c9714e8bf2727eb03706e, type: 3}
-      insertIndex: 0
+      insertIndex: -1
       addedObject: {fileID: 992053607}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a777996ec05c9714e8bf2727eb03706e, type: 3}
