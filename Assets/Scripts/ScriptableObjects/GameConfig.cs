@@ -3,5 +3,5 @@
 [CreateAssetMenu(menuName = "SO Configs/" + nameof(GameConfig), fileName = nameof(GameConfig))]
 public class GameConfig : ScriptableObject
 {
-    public int someConfig;
+    public float speed = 2f;
 }
