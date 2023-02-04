@@ -96,11 +96,16 @@ public class SpawnManager : MonoBehaviour
         pooledObject.transform.SetPositionAndRotation(randomPosition, transform.rotation);
         pooledObject.transform.localScale = scale;
 
-        pooledObject.GetComponent<SpriteRenderer>().sprite = randomPrefab.GetComponent<SpriteRenderer>().sprite;
+        SpriteRenderer pooledSpriteRenderer = pooledObject.GetComponent<SpriteRenderer>();
+        SpriteRenderer prefabSpriteRenderer = randomPrefab.GetComponent<SpriteRenderer>();
+        pooledSpriteRenderer.sprite = prefabSpriteRenderer.sprite;
+        pooledSpriteRenderer.color = prefabSpriteRenderer.color;
+
+        pooledObject.GetComponent<AudioSource>().clip = randomPrefab.GetComponent<AudioSource>().clip;
 
         PolygonCollider2D pooledCollider = pooledObject.GetComponent<PolygonCollider2D>();
         PolygonCollider2D prefabCollider = randomPrefab.GetComponent<PolygonCollider2D>();
-        pooledCollider.isTrigger = prefabCollider.isTrigger;
+        pooledCollider.isTrigger = prefabCollider.isTrigger;    
         pooledCollider.pathCount = prefabCollider.pathCount;
         for (int i = 0; i < prefabCollider.pathCount; i++)
         {

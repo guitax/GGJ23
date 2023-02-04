@@ -21,10 +21,6 @@ public class PlayerManager : MonoBehaviour
     public static HealthEvent SurfacePowerUp;
     public static HealthEvent SurfacePowerDown;
     public static HealthEvent SurfaceDeath;
-    
-    public static HealthEvent AudioPowerUp;
-    public static HealthEvent AudioPowerDown;
-    public static HealthEvent AudioDeath;
 
     private void Awake()
     {
@@ -55,15 +51,12 @@ public class PlayerManager : MonoBehaviour
         {
             case "PowerUp":
                 SurfacePowerUp?.Invoke();
-                AudioPowerUp?.Invoke();
                 break;
             case "PowerDown":
                 SurfacePowerDown?.Invoke();
-                AudioPowerDown?.Invoke();
                 break;
             default:
                 SurfaceDeath?.Invoke();
-                AudioDeath?.Invoke();
                 break;
         }
         
