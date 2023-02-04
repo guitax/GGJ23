@@ -80,20 +80,21 @@ public class SpawnManager : MonoBehaviour
 
     private void OnTakeFromPoolPowerDown(PooledGameObject obj)
     {
-        OnTakeFromPool(obj, powerDownPrefabs);
+        Vector3 scale = new(GameRandom.Core.NextFloat(1f, 3f), 1f, 1f);
+        OnTakeFromPool(obj, powerDownPrefabs, scale);
     }
 
     private void OnTakeFromPoolPowerUp(PooledGameObject obj)
     {
-        OnTakeFromPool(obj, powerUpPrefabs);
+        OnTakeFromPool(obj, powerUpPrefabs, Vector3.one);
     }
 
-    private void OnTakeFromPool(PooledGameObject pooledObject, PooledGameObject[] prefabs)
+    private void OnTakeFromPool(PooledGameObject pooledObject, PooledGameObject[] prefabs, Vector3 scale)
     {
         PooledGameObject randomPrefab = GameRandom.Core.NextElement(prefabs);
         Vector3 randomPosition = new(GameRandom.Core.NextFloat(-8f, 8f), transform.position.y, transform.position.z);
         pooledObject.transform.SetPositionAndRotation(randomPosition, transform.rotation);
-        pooledObject.transform.localScale = new Vector3(GameRandom.Core.NextFloat(1f, 3f), 1f, 1f);
+        pooledObject.transform.localScale = scale;
 
         pooledObject.GetComponent<SpriteRenderer>().sprite = randomPrefab.GetComponent<SpriteRenderer>().sprite;
 

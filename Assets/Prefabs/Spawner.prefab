@@ -50,4 +50,9 @@ MonoBehaviour:
   - {fileID: 5346125773669568028, guid: cf22145bdecad47308e75f1c8e4a7c0b, type: 3}
   - {fileID: -1150544329426762646, guid: a8f87e08277db44baa72eb2ea64e93a7, type: 3}
   powerUpPrefabs:
-  - {fileID: 5346125773669568028, guid: cf22145bdecad47308e75f1c8e4a7c0b, type: 3}
+  - {fileID: 4281393572261046424, guid: 72a7aaf8e764bc54793939c01155b6ee, type: 3}
+  - {fileID: 510487741384524500, guid: 40edb778a5541154bba3bde3457bb15a, type: 3}
+  powerDownSpawnTimeMin: 0.5
+  powerDownSpawnTimeMax: 3
+  powerUpSpawnTimeMin: 2
+  powerUpSpawnTimeMax: 3
