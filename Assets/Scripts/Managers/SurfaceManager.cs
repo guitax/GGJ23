@@ -13,7 +13,7 @@ public class SurfaceManager : MonoBehaviour
     private Camera mainCamera;
     private List<GameObject> greens;
 
-    private void Start()
+    void Start()
     {
         mainCamera = Camera.main;
         greens = createGreens();
@@ -24,14 +24,14 @@ public class SurfaceManager : MonoBehaviour
 
     private void PowerUpEvent()
     {
-        var firstActive = greens.First(g => g.activeSelf);
-        firstActive.SetActive(false);
+        var firstActive = greens.FirstOrDefault(g => !g.active);
+        firstActive.SetActive(true);
     }
 
     private void PowerDownEvent()
     {
-        var firstActive = greens.First(g => !g.activeSelf);
-        firstActive.SetActive(true);
+        var firstActive = greens.FirstOrDefault(g => g.active);
+        firstActive.SetActive(false);
     }
     
     // Update is called once per frame
