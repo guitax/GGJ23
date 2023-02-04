@@ -16,8 +16,16 @@ public class SpawnScript : MonoBehaviour
         if (timeSinceLastSpawn >= GameRandom.Core.NextFloat(2.0f, 3.1f))
         {
             timeSinceLastSpawn = 0.0f;
-            SpawnObject(badPrefabs[Random.Range(0,badPrefabs.Count)]);
-            SpawnObject(goodPrefabs[Random.Range(0,goodPrefabs.Count)]);
+            
+            if(badPrefabs.Count > 0)
+            {
+                SpawnObject(badPrefabs[Random.Range(0,badPrefabs.Count)]);
+            }
+
+            if (goodPrefabs.Count > 0)
+            {
+                SpawnObject(goodPrefabs[Random.Range(0, goodPrefabs.Count)]);
+            }
         }
     }
 
