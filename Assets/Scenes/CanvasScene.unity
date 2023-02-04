@@ -372,6 +372,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2488502378607328465, guid: a777996ec05c9714e8bf2727eb03706e, type: 3}
+      propertyPath: gameConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: 35f17065890d99c4cb7c42076903413e, type: 2}
     - target: {fileID: 2488502378607328466, guid: a777996ec05c9714e8bf2727eb03706e, type: 3}
       propertyPath: m_CullTransparentMesh
       value: 1
