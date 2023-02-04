@@ -6,7 +6,7 @@ public class PlayerManager : MonoBehaviour
     private const float ForwardDirectionDegrees = 0f;
 
     [SerializeField]
-    private float speed = 1f;
+    private GameConfig gameConfig;
     [SerializeField]
     private float rotationSpeed = 25f;
     [SerializeField]
@@ -43,7 +43,7 @@ public class PlayerManager : MonoBehaviour
         }
 
         //transform.position -= transform.up * speed * Time.deltaTime;
-        Vector2 newPosition = transform.position - speed * Time.deltaTime * transform.up;
+        Vector2 newPosition = transform.position - gameConfig.speed * Time.deltaTime * transform.up;
         transform.position = new Vector2(newPosition.x, transform.position.y);
     }
 
