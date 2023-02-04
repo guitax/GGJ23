@@ -40,7 +40,7 @@ public class PlayerManager : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collider)
     {
         Debug.Log("Collision");
-        col.SendMessage	($"{col.name}Event");
+        collider.SendMessage($"{collider.name}Event");
     }
 
     private void Move()
