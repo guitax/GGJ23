@@ -3,14 +3,14 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    private const float ForwardDirectionDegrees = 180;
+    private const float ForwardDirectionDegrees = 0f;
 
     [SerializeField]
-    private float speed = 2f;
+    private float speed = 1f;
     [SerializeField]
     private float rotationSpeed = 25f;
     [SerializeField]
-    [Range(45f, 90f)]
+    [Range(45f, 75f)]
     private float maxRotationDegrees = 60f;
 
     private PlayerInputActions playerInputActions;
@@ -48,10 +48,18 @@ public class PlayerManager : MonoBehaviour
     private float GetTargetAngle(float moveDirection)
     {
         float targetAngle = transform.rotation.eulerAngles.z;
-        
-        if (maxRotationDegrees < Math.Abs(ForwardDirectionDegrees - targetAngle))
+        if (targetAngle > 180f)
         {
-            targetAngle +=  Math.Sign(moveDirection) * rotationSpeed * Time.deltaTime;
+            targetAngle -= 360f;
+        }
+
+        if (moveDirection < 0f && targetAngle > ForwardDirectionDegrees - maxRotationDegrees)
+        {
+            targetAngle -= rotationSpeed * Time.deltaTime;
+        }
+        else if (moveDirection > 0f && targetAngle < ForwardDirectionDegrees + maxRotationDegrees)
+        {
+            targetAngle += rotationSpeed * Time.deltaTime;
         }
 
         return targetAngle;
