@@ -24,14 +24,26 @@ public class SurfaceManager : MonoBehaviour
 
     private void PowerUpEvent()
     {
-        var firstActive = greens.FirstOrDefault(g => !g.active);
+        var firstActive = greens.FirstOrDefault(g => !g.activeSelf);
+        
+        if(firstActive == null)
+            return;
+        
         firstActive.SetActive(true);
     }
 
     private void PowerDownEvent()
     {
-        var firstActive = greens.FirstOrDefault(g => g.active);
+        var activeGreens = greens.Where(g => g.activeSelf).ToList();
+        if (activeGreens.Count() == 1)
+        {
+            PlayerManager.SurfaceDeath.Invoke();
+        }
+        
+        var firstActive = activeGreens.First();
+        
         firstActive.SetActive(false);
+        
     }
     
     // Update is called once per frame

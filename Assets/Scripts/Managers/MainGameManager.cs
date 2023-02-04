@@ -22,7 +22,14 @@ public class MainGameManager : MonoBehaviour
     {
         Debug.Log("Start");
         //audio_backgroundMusic.Play();
+        PlayerManager.SurfaceDeath += OnDeath;
+
         yield return null;
+    }
+
+    private void OnDeath()
+    {
+        Time.timeScale = 0;
     }
 
     private void Update()
