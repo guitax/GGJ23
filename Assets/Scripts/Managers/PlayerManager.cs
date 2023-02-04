@@ -42,7 +42,9 @@ public class PlayerManager : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 0, targetAngle);
         }
 
-        transform.position -= transform.up * speed * Time.deltaTime;
+        //transform.position -= transform.up * speed * Time.deltaTime;
+        Vector2 newPosition = transform.position - speed * Time.deltaTime * transform.up;
+        transform.position = new Vector2(newPosition.x, transform.position.y);
     }
 
     private float GetTargetAngle(float moveDirection)
