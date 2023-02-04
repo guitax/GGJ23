@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class MyTrailRenderer : MonoBehaviour
+public class RootSpawnManager : MonoBehaviour
 {
     public GameConfig gameConfig;
     public int ClonesPerSecond = 10;
