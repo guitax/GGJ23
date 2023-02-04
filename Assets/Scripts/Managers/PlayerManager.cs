@@ -1,9 +1,9 @@
-using System;
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
     private const float ForwardDirectionDegrees = 0f;
+   
 
     [SerializeField]
     private GameConfig gameConfig;
@@ -12,8 +12,16 @@ public class PlayerManager : MonoBehaviour
     [SerializeField]
     [Range(45f, 75f)]
     private float maxRotationDegrees = 60f;
+    private const float BoundaryOffSet = 0.01f;
 
     private PlayerInputActions playerInputActions;
+    private Camera mainCamera;
+
+
+    private void Start()
+    {
+        mainCamera = Camera.main;
+    }
 
     private void Awake()
     {
@@ -42,9 +50,19 @@ public class PlayerManager : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 0, targetAngle);
         }
 
-        //transform.position -= transform.up * speed * Time.deltaTime;
-        Vector2 newPosition = transform.position - gameConfig.speed * Time.deltaTime * transform.up;
-        transform.position = new Vector2(newPosition.x, transform.position.y);
+        UpdateXPosition();
+    }
+
+    private void UpdateXPosition()
+    {
+        var currentPosition = transform.position;
+        var transformedVector = currentPosition - gameConfig.speed * Time.deltaTime * transform.up;
+        var screenVector = mainCamera.WorldToViewportPoint(transformedVector);
+
+        if (screenVector.x - BoundaryOffSet < 0f || screenVector.x + BoundaryOffSet > 1f )
+            return;
+
+        transform.position = new Vector2(transformedVector.x, currentPosition.y);
     }
 
     private float GetTargetAngle(float moveDirection)
