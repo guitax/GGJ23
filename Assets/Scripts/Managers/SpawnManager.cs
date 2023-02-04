@@ -11,6 +11,14 @@ public class SpawnManager : MonoBehaviour
     private PooledGameObject[] powerDownPrefabs;
     [SerializeField]
     private PooledGameObject[] powerUpPrefabs;
+    [SerializeField]
+    private float powerDownSpawnTimeMin = 0.5f;
+    [SerializeField]
+    private float powerDownSpawnTimeMax = 3f;
+    [SerializeField]
+    private float powerUpSpawnTimeMin = 2f;
+    [SerializeField]
+    private float powerUpSpawnTimeMax = 3f;
 
     private float powerDownTimeSinceLastSpawn;
     private float powerUpTimeSinceLastSpawn;
@@ -37,7 +45,7 @@ public class SpawnManager : MonoBehaviour
     {
         powerDownTimeSinceLastSpawn += Time.deltaTime;
 
-        if (powerDownTimeSinceLastSpawn >= GameRandom.Core.NextFloat(2f, 3f))
+        if (powerDownTimeSinceLastSpawn >= GameRandom.Core.NextFloat(powerDownSpawnTimeMin, powerDownSpawnTimeMax))
         {
             powerDownTimeSinceLastSpawn = 0f;
             powerDownSpawnPool.Get();
@@ -45,7 +53,7 @@ public class SpawnManager : MonoBehaviour
 
         powerUpTimeSinceLastSpawn += Time.deltaTime;
 
-        if (powerUpTimeSinceLastSpawn >= GameRandom.Core.NextFloat(2f, 3f))
+        if (powerUpTimeSinceLastSpawn >= GameRandom.Core.NextFloat(powerUpSpawnTimeMin, powerUpSpawnTimeMax))
         {
             powerUpTimeSinceLastSpawn = 0f;
             powerUpSpawnPool.Get();
