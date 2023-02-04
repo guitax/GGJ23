@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: GameConfig
   m_EditorClassIdentifier: 
   speed: 12
-  backgroundSpeed: 0.05
+  backgroundSpeed: 0.2
   surfaceSpeed: 2
   boundaryOffSet: 0.02

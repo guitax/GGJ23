@@ -275,8 +275,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -1}
-  m_SizeDelta: {x: 1080, y: 1921.3}
+  m_AnchoredPosition: {x: 0, y: 665}
+  m_SizeDelta: {x: 1080, y: 1185.63}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &992053608
 MonoBehaviour:
@@ -298,7 +298,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 3cdc583e78fa64b88913223a9d6dd00b, type: 3}
+  m_Texture: {fileID: 2800000, guid: 57bc4932094a34ac5a7c90791089aa94, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -326,6 +326,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameConfig: {fileID: 11400000, guid: 35f17065890d99c4cb7c42076903413e, type: 2}
+  upperBound: 1.05
 --- !u!20 &1965645000 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 2661587081712038146, guid: cc71b304a436c67429e5c2bf00b21e71, type: 3}
@@ -373,12 +374,28 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2488502378607328465, guid: a777996ec05c9714e8bf2727eb03706e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2488502378607328465, guid: a777996ec05c9714e8bf2727eb03706e, type: 3}
       propertyPath: gameConfig
       value: 
       objectReference: {fileID: 11400000, guid: 35f17065890d99c4cb7c42076903413e, type: 2}
     - target: {fileID: 2488502378607328466, guid: a777996ec05c9714e8bf2727eb03706e, type: 3}
       propertyPath: m_CullTransparentMesh
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2488502378607328467, guid: a777996ec05c9714e8bf2727eb03706e, type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 2800000, guid: 88509155732ad4093bfe6a211ed2f107, type: 3}
+    - target: {fileID: 2488502378607328467, guid: a777996ec05c9714e8bf2727eb03706e, type: 3}
+      propertyPath: m_Maskable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2488502378607328467, guid: a777996ec05c9714e8bf2727eb03706e, type: 3}
+      propertyPath: m_Material
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2488502378607328476, guid: a777996ec05c9714e8bf2727eb03706e, type: 3}
       propertyPath: m_SizeDelta.x

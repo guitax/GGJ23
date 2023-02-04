@@ -5,6 +5,9 @@ public class SurfaceManager : MonoBehaviour
     [SerializeField]
     private GameConfig gameConfig;
 
+    [SerializeField]
+    private float upperBound = 1.0f;
+
     private Camera mainCamera;
 
     private void Start()
@@ -21,7 +24,7 @@ public class SurfaceManager : MonoBehaviour
 
         var screenVector = mainCamera.WorldToViewportPoint(transformedVector);
 
-        if (screenVector.y  >0.75f)
+        if (screenVector.y  > upperBound)
             return;
             
         transform.position = new Vector2(currentPosition.x, transformedVector.y);
