@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2905644941811617158}
   - component: {fileID: 3001020780994319485}
   - component: {fileID: 4597752894213978100}
+  - component: {fileID: 5346125773669568028}
   m_Layer: 0
   m_Name: rocks_03
   m_TagString: Untagged
@@ -175,3 +176,15 @@ PolygonCollider2D:
       - {x: 0.385, y: -0.475}
       - {x: 0.505, y: -0.39499998}
   m_UseDelaunayMesh: 0
+--- !u!114 &5346125773669568028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2905644941811617153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fad2f403775dd4418630c6560f1d30a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
