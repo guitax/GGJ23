@@ -290,6 +290,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 207552431}
     - target: {fileID: -8447634890602781714, guid: f9b8af106b5e3874d80e53556fa14b30, type: 3}
+      propertyPath: godMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8447634890602781714, guid: f9b8af106b5e3874d80e53556fa14b30, type: 3}
+      propertyPath: playerManager
+      value: 
+      objectReference: {fileID: 2075809541}
+    - target: {fileID: -8447634890602781714, guid: f9b8af106b5e3874d80e53556fa14b30, type: 3}
       propertyPath: audio_backgroundMusic
       value: 
       objectReference: {fileID: 1174263764}
@@ -626,6 +634,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 313c2057624304f15a4d895e929cfff2, type: 3}
+--- !u!114 &2075809541 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2639891801295043570, guid: 43d879fa014574343bdc0e63038a8ee7, type: 3}
+  m_PrefabInstance: {fileID: 232578111}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbfd5377a1462af46b82e062a1046c7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2661587080452222410
 PrefabInstance:
   m_ObjectHideFlags: 0
