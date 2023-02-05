@@ -67,7 +67,7 @@ public class PlayerManager : MonoBehaviour
         string name1 = collider.gameObject.name;
         string name2 = gameObject.name;
 
-        Debug.Log("Collision between " + name1 + " and " + name2);
+        //Debug.Log("Collision between " + name1 + " and " + name2);
 
         switch (collider.name)
         {
