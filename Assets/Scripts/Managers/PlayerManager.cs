@@ -10,10 +10,12 @@ public class PlayerManager : MonoBehaviour
     [SerializeField]
     [Range(45f, 75f)]
     private float maxRotationDegrees = 60f;
+    private GameScore gameScore;
+
+    private Camera mainCamera;
 
     public PlayerInputActions playerInputActions;
-    private Camera mainCamera;
-    
+
     public delegate void HealthEvent();
 
     public static HealthEvent SurfacePowerUp;
@@ -24,6 +26,8 @@ public class PlayerManager : MonoBehaviour
     {
         playerInputActions = new PlayerInputActions();
         playerInputActions.Player.Enable();
+
+        gameScore = new GameScore();
     }
 
     private void Start()
@@ -33,6 +37,11 @@ public class PlayerManager : MonoBehaviour
 
     private void Update()
     {
+        if (MainGameManager.Instance.IsPlaying)
+        {
+            gameScore.LifeTime += Time.deltaTime;
+        }
+
         Move();
     }
 
@@ -47,20 +56,22 @@ public class PlayerManager : MonoBehaviour
         string name2 = gameObject.name;
 
         Debug.Log("Collision between " + name1 + " and " + name2);
-        
+
         switch (collider.name)
         {
-            case "PowerUp":
-                SurfacePowerUp?.Invoke();
-                break;
             case "PowerDown":
+                gameScore.TotalPowerDowns++;
                 SurfacePowerDown?.Invoke();
+                break;
+            case "PowerUp":
+                gameScore.TotalPowerUps++;
+                SurfacePowerUp?.Invoke();
                 break;
             default:
                 SurfaceDeath?.Invoke();
                 break;
         }
-        
+
     }
 
     private void Move()

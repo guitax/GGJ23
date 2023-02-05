@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class MainGameManager : MonoBehaviour
 {
     public static MainGameManager Instance { get; private set; }
+    public bool IsPlaying { get; private set; }
 
     public GameConfig gameConfig;
    
@@ -26,7 +27,6 @@ public class MainGameManager : MonoBehaviour
     private IEnumerator Start()
     {
         Time.timeScale = 0;
-
         PlayerManager.SurfaceDeath += OnDeath;
 
         yield return null;
@@ -43,17 +43,20 @@ public class MainGameManager : MonoBehaviour
 
     private void Update()
     {
-        float moveDirection = playerManager.playerInputActions.Player.Move.ReadValue<float>();
-        if (moveDirection != 0f)
+        if (!IsPlaying)
         {
-            Time.timeScale = 1;
-
-            if (!audio_backgroundMusic.isPlaying)
+            float moveDirection = playerManager.playerInputActions.Player.Move.ReadValue<float>();
+            if (moveDirection != 0f)
             {
-                audio_backgroundMusic.Play();    
+                IsPlaying = true;
+                Time.timeScale = 1;
+
+                if (!audio_backgroundMusic.isPlaying)
+                {
+                    audio_backgroundMusic.Play();    
+                }
             }
         }
-        
         
         if (Keyboard.current.escapeKey.wasPressedThisFrame)
         {
