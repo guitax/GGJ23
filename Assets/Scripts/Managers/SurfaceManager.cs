@@ -5,17 +5,14 @@ using UnityEngine;
 public class SurfaceManager : MonoBehaviour
 {
     [SerializeField]
-    private GameConfig gameConfig;
-    [SerializeField]
     private float upperBound = 1.0f;
 
     private Camera mainCamera;
-    private List<GameObject> greens;
+    private GameObject[] greens;
 
     private void Start()
     {
         mainCamera = Camera.main;
-        greens = CreateGreens();
 
         PlayerManager.SurfacePowerDown += PowerDownEvent;
         PlayerManager.SurfacePowerUp += PowerUpEvent;
@@ -23,31 +20,30 @@ public class SurfaceManager : MonoBehaviour
 
     private void PowerUpEvent()
     {
-        GameObject firstActive = greens.FirstOrDefault(g => !g.activeSelf);
-        if (firstActive != null)
+        GameObject firstInactive = greens.FirstOrDefault(g => !g.activeSelf);
+        if (firstInactive != null)
         {
-            firstActive.SetActive(true);
+            firstInactive.SetActive(true);
         }
     }
 
     private void PowerDownEvent()
     {
-        List<GameObject> activeGreens = greens.Where(g => g.activeSelf).ToList();
-        if (activeGreens.Count() == 1)
-        {
-            PlayerManager.SurfaceDeath.Invoke();
-        }
-
-        GameObject firstActive = activeGreens.FirstOrDefault();
+        GameObject firstActive = greens.FirstOrDefault();
         if (firstActive != null)
         {
             firstActive.SetActive(false);
+        }
+
+        if (!greens.Any(g => g.activeSelf))
+        {
+            PlayerManager.SurfaceDeath.Invoke();
         }
     }
 
     private void Update()
     {
-        Vector3 transformedVector = transform.position + (gameConfig.surfaceSpeed * Time.deltaTime * transform.up);
+        Vector3 transformedVector = transform.position + (MainGameManager.Instance.gameConfig.surfaceSpeed * Time.deltaTime * transform.up);
 
         Vector3 screenVector = mainCamera.WorldToViewportPoint(transformedVector);
 
@@ -57,18 +53,5 @@ public class SurfaceManager : MonoBehaviour
         }
 
         transform.position = new Vector3(transform.position.x, transformedVector.y, transform.position.z);
-    }
-
-    private List<GameObject> CreateGreens()
-    {
-        GameObject green1 = GameObject.Find("green1");
-        GameObject green2 = GameObject.Find("green2");
-        GameObject green3 = GameObject.Find("green3");
-        GameObject green4 = GameObject.Find("green4");
-
-        return new List<GameObject>
-        {
-            green1, green2, green3, green4
-        };
     }
 }

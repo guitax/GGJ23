@@ -4,8 +4,6 @@ using UnityEngine.Pool;
 public class SpawnManager : MonoBehaviour
 {
     [SerializeField]
-    private GameConfig gameConfig;
-    [SerializeField]
     private Transform spawnedParent;
     [SerializeField]
     private PooledGameObject[] powerDownPrefabs;

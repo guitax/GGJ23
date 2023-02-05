@@ -5,8 +5,6 @@ using UnityEngine.Pool;
 public class RootSpawnManager : MonoBehaviour
 {
     [SerializeField]
-    private GameConfig gameConfig;
-    [SerializeField]
     private int ClonesPerSecond = 10;
     [SerializeField]
     private Transform spawnedParent;
