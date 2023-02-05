@@ -90,7 +90,7 @@ public class SpawnManager : MonoBehaviour
     private void OnTakeFromPool(PooledGameObject pooledObject, PooledGameObject[] prefabs, Vector3 scale)
     {
         PooledGameObject randomPrefab = GameRandom.Core.NextElement(prefabs);
-        Vector3 randomPosition = new(GameRandom.Core.NextFloat(-8f, 8f), transform.position.y, transform.position.z);
+        Vector3 randomPosition = new(GameRandom.Core.NextFloat(-MainGameManager.Instance.gameConfig.boundaryOffset, MainGameManager.Instance.gameConfig.boundaryOffset), transform.position.y, transform.position.z);
         pooledObject.transform.SetPositionAndRotation(randomPosition, transform.rotation);
         pooledObject.transform.localScale = scale;
 

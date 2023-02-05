@@ -7,6 +7,8 @@ public class PlayerManager : MonoBehaviour
     private const float ForwardDirectionDegrees = 0f;
 
     [SerializeField]
+    private RectTransform boundary;
+    [SerializeField]
     private float rotationSpeed = 35f;
     [SerializeField]
     [Range(45f, 75f)]
@@ -119,10 +121,9 @@ public class PlayerManager : MonoBehaviour
     private void UpdateXPosition()
     {
         Vector3 transformedVector = transform.position - (MainGameManager.Instance.gameConfig.speed * Time.deltaTime * transform.up);
-        Vector3 screenVector = mainCamera.WorldToViewportPoint(transformedVector);
 
-        if (screenVector.x - MainGameManager.Instance.gameConfig.boundaryOffSet < 0f
-            || screenVector.x + MainGameManager.Instance.gameConfig.boundaryOffSet > 1f)
+        if (transformedVector.x < -MainGameManager.Instance.gameConfig.boundaryOffset
+            || transformedVector.x > MainGameManager.Instance.gameConfig.boundaryOffset)
         {
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(Vector3.down), Time.deltaTime);
             return;

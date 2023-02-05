@@ -15,4 +15,4 @@ MonoBehaviour:
   speed: 8
   backgroundSpeed: 0.2
   surfaceSpeed: 2
-  boundaryOffSet: 0.02
+  boundaryOffset: 8

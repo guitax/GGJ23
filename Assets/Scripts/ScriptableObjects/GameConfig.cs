@@ -6,5 +6,5 @@ public class GameConfig : ScriptableObject
     public float speed;
     public float backgroundSpeed;
     public float surfaceSpeed;
-    public float boundaryOffSet;
+    public float boundaryOffset;
 }
