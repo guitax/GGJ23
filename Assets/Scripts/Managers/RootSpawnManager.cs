@@ -9,8 +9,9 @@ public class RootSpawnManager : MonoBehaviour
     [SerializeField]
     private Transform spawnedParent;
     [SerializeField]
+    private Sprite[] rootSprites;
+    [SerializeField]
     private PooledGameObject spawnPrefab;
-    private SpriteRenderer spawnPrefabSpriteRenderer;
 
     private IObjectPool<PooledGameObject> rootSpawnPool;
 
@@ -21,8 +22,6 @@ public class RootSpawnManager : MonoBehaviour
             OnTakeFromPool,
             OnReturnedToPool,
             OnDestroyPoolObject);
-
-        spawnPrefabSpriteRenderer = spawnPrefab.GetComponent<SpriteRenderer>();
     }
 
     private void Start()
@@ -51,9 +50,10 @@ public class RootSpawnManager : MonoBehaviour
     {
         obj.transform.SetPositionAndRotation(transform.position, transform.rotation);
         obj.transform.localScale = Vector3.one;
+
         SpriteRenderer spawnedSpriteRenderer = obj.GetComponent<SpriteRenderer>();
-        spawnedSpriteRenderer.sprite = spawnPrefabSpriteRenderer.sprite;
-        spawnedSpriteRenderer.color = spawnPrefabSpriteRenderer.color;
+        spawnedSpriteRenderer.sprite = GameRandom.Core.NextElement(rootSprites);
+
         obj.gameObject.SetActive(true);
     }
 

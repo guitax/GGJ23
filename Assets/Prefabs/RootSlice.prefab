@@ -47,6 +47,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ClonesPerSecond: 5
   spawnedParent: {fileID: 0}
+  rootSprites:
+  - {fileID: 21300000, guid: 857a0a7571d87a649ad4799c15794631, type: 3}
+  - {fileID: 21300000, guid: ca79432cf1fbae24c81be2025028e8dc, type: 3}
+  - {fileID: 21300000, guid: c6f51dc1d22c4e94a90989a85be41efe, type: 3}
+  - {fileID: 21300000, guid: 4c2e067e0d728a14cb519af23412c03c, type: 3}
   spawnPrefab: {fileID: -5341537577567467955, guid: 74423497ff7c24886b156383b5504e65, type: 3}
 --- !u!212 &3089667448691944071
 SpriteRenderer:
