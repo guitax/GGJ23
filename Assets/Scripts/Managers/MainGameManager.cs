@@ -8,7 +8,11 @@ public class MainGameManager : MonoBehaviour
     public static MainGameManager Instance { get; private set; }
 
     public GameConfig gameConfig;
+   
     public AudioSource audio_backgroundMusic;
+    
+    [SerializeField]
+    public PlayerManager playerManager;
     [SerializeField]
     private bool godMode;
 
@@ -19,10 +23,15 @@ public class MainGameManager : MonoBehaviour
         GameRandom.Core = new DefaultRandom();
     }
 
+    
+
 
     private IEnumerator Start()
     {
-        audio_backgroundMusic.Play();
+        Time.timeScale = 0;
+
+      
+
         PlayerManager.SurfaceDeath += OnDeath;
 
         yield return null;
@@ -39,6 +48,18 @@ public class MainGameManager : MonoBehaviour
 
     private void Update()
     {
+        float moveDirection = playerManager.playerInputActions.Player.Move.ReadValue<float>();
+        if (moveDirection != 0f)
+        {
+            Time.timeScale = 1;
+
+            if (!audio_backgroundMusic.isPlaying)
+            {
+                audio_backgroundMusic.Play();    
+            }
+        }
+        
+        
         if (Keyboard.current.escapeKey.wasPressedThisFrame)
         {
             Quit();

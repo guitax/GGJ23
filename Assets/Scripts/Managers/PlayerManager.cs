@@ -11,7 +11,7 @@ public class PlayerManager : MonoBehaviour
     [Range(45f, 75f)]
     private float maxRotationDegrees = 60f;
 
-    private PlayerInputActions playerInputActions;
+    public PlayerInputActions playerInputActions;
     private Camera mainCamera;
     
     public delegate void HealthEvent();
