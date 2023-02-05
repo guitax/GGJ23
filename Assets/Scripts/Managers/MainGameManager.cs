@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class MainGameManager : MonoBehaviour
 {
@@ -32,6 +33,7 @@ public class MainGameManager : MonoBehaviour
         if (!godMode)
         {
             Time.timeScale = 0;
+            SceneManager.LoadScene("DeathScene");
         }
     }
 
