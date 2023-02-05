@@ -34,6 +34,7 @@ public class MainGameManager : MonoBehaviour
 
     public void StartPlay()
     {
+        GameScore = new GameScore();
         Time.timeScale = 1f;
         IsPlaying = true;
 
