@@ -13,7 +13,6 @@ public class MainGameManager : MonoBehaviour
 
     private void Awake()
     {
-        Debug.Log("Awake");
         DontDestroyOnLoad(this);
         Instance = this;
         GameRandom.Core = new DefaultRandom();
@@ -22,8 +21,7 @@ public class MainGameManager : MonoBehaviour
 
     private IEnumerator Start()
     {
-        Debug.Log("Start");
-        //audio_backgroundMusic.Play();
+        audio_backgroundMusic.Play();
         PlayerManager.SurfaceDeath += OnDeath;
 
         yield return null;
@@ -41,7 +39,6 @@ public class MainGameManager : MonoBehaviour
     {
         if (Keyboard.current.escapeKey.wasPressedThisFrame)
         {
-            Debug.Log("Quit");
             Quit();
         }
     }
