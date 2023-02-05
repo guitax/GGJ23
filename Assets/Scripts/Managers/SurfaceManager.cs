@@ -13,6 +13,8 @@ public class SurfaceManager : MonoBehaviour
     private void Start()
     {
         mainCamera = Camera.main;
+        
+        Debug.Log("Start surface manager");
 
         PlayerManager.SurfacePowerDown += PowerDownEvent;
         PlayerManager.SurfacePowerUp += PowerUpEvent;
