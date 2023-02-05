@@ -24,6 +24,7 @@ public class PlayerManager : MonoBehaviour
     public static HealthEvent SurfacePowerUp;
     public static HealthEvent SurfacePowerDown;
     public static HealthEvent SurfaceDeath;
+    private bool isDead;
 
     private void Awake()
     {
@@ -42,6 +43,11 @@ public class PlayerManager : MonoBehaviour
 
     private void Update()
     {
+        if (isDead)
+        {
+            return;
+        }
+
         if (MainGameManager.Instance.IsPlaying)
         {
             gameScore.LifeTime += Time.deltaTime;
@@ -82,6 +88,7 @@ public class PlayerManager : MonoBehaviour
     {
         if (!godMode)
         {
+            isDead = true;
             MainGameManager.Instance.StopPlay();
             MainGameManager.Instance.GameScore = gameScore;
             SceneManager.LoadScene("DeathScene");
