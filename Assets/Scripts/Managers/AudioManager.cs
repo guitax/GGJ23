@@ -11,8 +11,10 @@ public class AudioManager : MonoBehaviour
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    private void OnTriggerEnter2D(Collider2D col)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
+        if (collider.gameObject.name.StartsWith("Power")) return;
+        
         _audioSource.Play();
         _spriteRenderer.color = Color.clear;
     }

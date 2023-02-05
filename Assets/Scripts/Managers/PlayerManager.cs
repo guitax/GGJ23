@@ -45,8 +45,11 @@ public class PlayerManager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        Debug.Log("Collision");
+        string name1 = collider.gameObject.name;
+        string name2 = gameObject.name;
 
+        Debug.Log("Collision between " + name1 + " and " + name2);
+        
         switch (collider.name)
         {
             case "PowerUp":
