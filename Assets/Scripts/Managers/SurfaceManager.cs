@@ -6,9 +6,10 @@ public class SurfaceManager : MonoBehaviour
 {
     [SerializeField]
     private float upperBound = 1.0f;
+    [SerializeField]
+    private GameObject[] greens;
 
     private Camera mainCamera;
-    private GameObject[] greens;
 
     private void Start()
     {

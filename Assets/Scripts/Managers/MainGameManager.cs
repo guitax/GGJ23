@@ -12,7 +12,7 @@ public class MainGameManager : MonoBehaviour
     public AudioSource audio_backgroundMusic;
     
     [SerializeField]
-    public PlayerManager playerManager;
+    private PlayerManager playerManager;
     [SerializeField]
     private bool godMode;
 
@@ -23,14 +23,9 @@ public class MainGameManager : MonoBehaviour
         GameRandom.Core = new DefaultRandom();
     }
 
-    
-
-
     private IEnumerator Start()
     {
         Time.timeScale = 0;
-
-      
 
         PlayerManager.SurfaceDeath += OnDeath;
 
