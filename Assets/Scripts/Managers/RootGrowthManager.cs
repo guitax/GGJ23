@@ -27,7 +27,7 @@ public class RootGrowthManager : MonoBehaviour
         if (random < growthProbability)
         {
             spriteRenderer.sprite = GameRandom.Core.NextElement(grownRootSprites);
-            transform.localScale = new Vector3(GameRandom.Core.NextFloat(0.8f, 1f), 1f, 1f);
+            transform.localScale = new Vector3(GameRandom.Core.NextFloat(0.95f, 1f), 1f, 1f);
         }
         else if (random < shrinkProbability)
         {

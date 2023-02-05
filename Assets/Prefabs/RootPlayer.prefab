@@ -50,9 +50,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbfd5377a1462af46b82e062a1046c7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameConfig: {fileID: 11400000, guid: 35f17065890d99c4cb7c42076903413e, type: 2}
   rotationSpeed: 40
   maxRotationDegrees: 60
+  godMode: 0
 --- !u!114 &2639891801295043580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268,10 +268,6 @@ PrefabInstance:
     - target: {fileID: 3967246025336974439, guid: 8a1bdaaba70e18e4586e9036cda7b4b4, type: 3}
       propertyPath: m_RootOrder
       value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3967246025336974439, guid: 8a1bdaaba70e18e4586e9036cda7b4b4, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.06
       objectReference: {fileID: 0}
     - target: {fileID: 3967246025336974439, guid: 8a1bdaaba70e18e4586e9036cda7b4b4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
