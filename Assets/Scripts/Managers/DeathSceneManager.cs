@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -6,12 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class DeathSceneManager : MonoBehaviour
 {
-    public AudioSource death_Sound;
-    // Start is called before the first frame update
+    [SerializeField]
+    private AudioSource death_Sound;
 
     private void Update()
     {
-        if (Keyboard.current.anyKey.isPressed)
+        if (Keyboard.current.spaceKey.isPressed)
         {
             SceneManager.LoadScene("MainScene");
         }

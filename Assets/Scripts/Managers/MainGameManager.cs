@@ -10,12 +10,21 @@ public class MainGameManager : MonoBehaviour
 
     public GameConfig gameConfig;
 
-    public AudioSource audio_backgroundMusic;
+    private AudioSource audioSource;
 
     private void Awake()
     {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        audioSource = GetComponent<AudioSource>();
+
         DontDestroyOnLoad(this);
         Instance = this;
+
         GameRandom.Core = new DefaultRandom();
     }
 
@@ -38,16 +47,21 @@ public class MainGameManager : MonoBehaviour
         Time.timeScale = 1f;
         IsPlaying = true;
 
-        if (!audio_backgroundMusic.isPlaying)
+        if (!audioSource.isPlaying)
         {
-            audio_backgroundMusic.Play();
+            audioSource.Play();
         }
     }
 
     public void StopPlay()
     {
-        Time.timeScale = 0;
+        Time.timeScale = 0f;
         IsPlaying = false;
+
+        if (audioSource.isPlaying)
+        {
+            audioSource.Stop();
+        }
     }
 
     private static void Quit()
@@ -57,5 +71,11 @@ public class MainGameManager : MonoBehaviour
 #else
         Application.Quit();
 #endif
+    }
+
+    public void Destroy()
+    {
+        Instance = null;
+        Destroy(gameObject);
     }
 }
