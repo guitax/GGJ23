@@ -55,5 +55,5 @@ MonoBehaviour:
   - {fileID: 510487741384524500, guid: 40edb778a5541154bba3bde3457bb15a, type: 3}
   powerDownSpawnTimeMin: 0.5
   powerDownSpawnTimeMax: 3
-  powerUpSpawnTimeMin: 2
-  powerUpSpawnTimeMax: 3
+  powerUpSpawnTimeMin: 2.5
+  powerUpSpawnTimeMax: 5
