@@ -10,7 +10,7 @@ public class DeathSceneManager : MonoBehaviour
 
     private void Update()
     {
-        if (Keyboard.current.spaceKey.isPressed && !death_Sound.isPlaying)
+        if (Keyboard.current.spaceKey.isPressed)
         {
             SceneManager.LoadScene("MainScene");
         }
