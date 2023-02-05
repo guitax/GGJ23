@@ -54,4 +54,10 @@ public class SurfaceManager : MonoBehaviour
 
         transform.position = new Vector3(transform.position.x, transformedVector.y, transform.position.z);
     }
+
+    private void OnDestroy()
+    {
+        PlayerManager.SurfacePowerDown -= PowerDownEvent;
+        PlayerManager.SurfacePowerUp -= PowerUpEvent;
+    }
 }

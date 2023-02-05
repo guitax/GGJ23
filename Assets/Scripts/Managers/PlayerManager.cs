@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class PlayerManager : MonoBehaviour
     [SerializeField]
     [Range(45f, 75f)]
     private float maxRotationDegrees = 60f;
+    [SerializeField]
+    private bool godMode;
     private GameScore gameScore;
 
     private Camera mainCamera;
@@ -28,6 +31,8 @@ public class PlayerManager : MonoBehaviour
         playerInputActions.Player.Enable();
 
         gameScore = new GameScore();
+
+        SurfaceDeath += OnDeath;
     }
 
     private void Start()
@@ -48,6 +53,7 @@ public class PlayerManager : MonoBehaviour
     private void OnDestroy()
     {
         playerInputActions.Player.Disable();
+        SurfaceDeath -= OnDeath;
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
@@ -68,10 +74,18 @@ public class PlayerManager : MonoBehaviour
                 SurfacePowerUp?.Invoke();
                 break;
             default:
-                SurfaceDeath?.Invoke();
                 break;
         }
+    }
 
+    private void OnDeath()
+    {
+        if (!godMode)
+        {
+            MainGameManager.Instance.StopPlay();
+            MainGameManager.Instance.GameScore = gameScore;
+            SceneManager.LoadScene("DeathScene");
+        }
     }
 
     private void Move()
@@ -80,11 +94,19 @@ public class PlayerManager : MonoBehaviour
 
         if (moveDirection != 0f)
         {
+            if (!MainGameManager.Instance.IsPlaying)
+            {
+                MainGameManager.Instance.StartPlay();
+            }
+
             float targetAngle = GetTargetAngle(moveDirection);
             transform.rotation = Quaternion.Euler(0f, 0f, targetAngle);
         }
 
-        UpdateXPosition();
+        if (MainGameManager.Instance.IsPlaying)
+        {
+            UpdateXPosition();
+        }
     }
 
     private void UpdateXPosition()
@@ -92,7 +114,8 @@ public class PlayerManager : MonoBehaviour
         Vector3 transformedVector = transform.position - (MainGameManager.Instance.gameConfig.speed * Time.deltaTime * transform.up);
         Vector3 screenVector = mainCamera.WorldToViewportPoint(transformedVector);
 
-        if (screenVector.x - MainGameManager.Instance.gameConfig.boundaryOffSet < 0f || screenVector.x + MainGameManager.Instance.gameConfig.boundaryOffSet > 1f)
+        if (screenVector.x - MainGameManager.Instance.gameConfig.boundaryOffSet < 0f
+            || screenVector.x + MainGameManager.Instance.gameConfig.boundaryOffSet > 1f)
         {
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(Vector3.down), Time.deltaTime);
             return;

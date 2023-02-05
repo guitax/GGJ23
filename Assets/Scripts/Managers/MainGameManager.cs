@@ -1,21 +1,16 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 
 public class MainGameManager : MonoBehaviour
 {
     public static MainGameManager Instance { get; private set; }
+
     public bool IsPlaying { get; private set; }
+    public GameScore GameScore { get; set; }
 
     public GameConfig gameConfig;
-   
+
     public AudioSource audio_backgroundMusic;
-    
-    [SerializeField]
-    private PlayerManager playerManager;
-    [SerializeField]
-    private bool godMode;
 
     private void Awake()
     {
@@ -24,44 +19,34 @@ public class MainGameManager : MonoBehaviour
         GameRandom.Core = new DefaultRandom();
     }
 
-    private IEnumerator Start()
+    private void Start()
     {
-        Time.timeScale = 0;
-        PlayerManager.SurfaceDeath += OnDeath;
-
-        yield return null;
-    }
-
-    private void OnDeath()
-    {
-        if (!godMode)
-        {
-            Time.timeScale = 0;
-            SceneManager.LoadScene("DeathScene");
-        }
+        StopPlay();
     }
 
     private void Update()
     {
-        if (!IsPlaying)
-        {
-            float moveDirection = playerManager.playerInputActions.Player.Move.ReadValue<float>();
-            if (moveDirection != 0f)
-            {
-                IsPlaying = true;
-                Time.timeScale = 1;
-
-                if (!audio_backgroundMusic.isPlaying)
-                {
-                    audio_backgroundMusic.Play();    
-                }
-            }
-        }
-        
         if (Keyboard.current.escapeKey.wasPressedThisFrame)
         {
             Quit();
         }
+    }
+
+    public void StartPlay()
+    {
+        Time.timeScale = 1f;
+        IsPlaying = true;
+
+        if (!audio_backgroundMusic.isPlaying)
+        {
+            audio_backgroundMusic.Play();
+        }
+    }
+
+    public void StopPlay()
+    {
+        Time.timeScale = 0;
+        IsPlaying = false;
     }
 
     private static void Quit()
