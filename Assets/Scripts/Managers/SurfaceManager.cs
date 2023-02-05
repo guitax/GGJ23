@@ -6,47 +6,45 @@ public class SurfaceManager : MonoBehaviour
 {
     [SerializeField]
     private GameConfig gameConfig;
-
     [SerializeField]
     private float upperBound = 1.0f;
 
     private Camera mainCamera;
     private List<GameObject> greens;
 
-    void Start()
+    private void Start()
     {
         mainCamera = Camera.main;
-        greens = createGreens();
-        
+        greens = CreateGreens();
+
         PlayerManager.SurfacePowerDown += PowerDownEvent;
         PlayerManager.SurfacePowerUp += PowerUpEvent;
     }
 
     private void PowerUpEvent()
     {
-        var firstActive = greens.FirstOrDefault(g => !g.activeSelf);
-        
-        if(firstActive == null)
-            return;
-        
-        firstActive.SetActive(true);
+        GameObject firstActive = greens.FirstOrDefault(g => !g.activeSelf);
+        if (firstActive != null)
+        {
+            firstActive.SetActive(true);
+        }
     }
 
     private void PowerDownEvent()
     {
-        var activeGreens = greens.Where(g => g.activeSelf).ToList();
+        List<GameObject> activeGreens = greens.Where(g => g.activeSelf).ToList();
         if (activeGreens.Count() == 1)
         {
             PlayerManager.SurfaceDeath.Invoke();
         }
-        
-        var firstActive = activeGreens.First();
-        
-        firstActive.SetActive(false);
-        
+
+        GameObject firstActive = activeGreens.FirstOrDefault();
+        if (firstActive != null)
+        {
+            firstActive.SetActive(false);
+        }
     }
-    
-    // Update is called once per frame
+
     private void Update()
     {
         Vector3 transformedVector = transform.position + (gameConfig.surfaceSpeed * Time.deltaTime * transform.up);
@@ -60,14 +58,13 @@ public class SurfaceManager : MonoBehaviour
 
         transform.position = new Vector3(transform.position.x, transformedVector.y, transform.position.z);
     }
-    
-    private List<GameObject> createGreens()
+
+    private List<GameObject> CreateGreens()
     {
-        
-        var green1 = GameObject.Find("green1");
-        var green2 = GameObject.Find("green2");
-        var green3 = GameObject.Find("green3");
-        var green4 = GameObject.Find("green4");
+        GameObject green1 = GameObject.Find("green1");
+        GameObject green2 = GameObject.Find("green2");
+        GameObject green3 = GameObject.Find("green3");
+        GameObject green4 = GameObject.Find("green4");
 
         return new List<GameObject>
         {

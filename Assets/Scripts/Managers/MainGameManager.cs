@@ -8,6 +8,8 @@ public class MainGameManager : MonoBehaviour
 
     public GameConfig gameConfig;
     public AudioSource audio_backgroundMusic;
+    [SerializeField]
+    private bool godMode;
 
     private void Awake()
     {
@@ -29,7 +31,10 @@ public class MainGameManager : MonoBehaviour
 
     private void OnDeath()
     {
-        Time.timeScale = 0;
+        if (!godMode)
+        {
+            Time.timeScale = 0;
+        }
     }
 
     private void Update()
