@@ -30,7 +30,7 @@ public class SurfaceManager : MonoBehaviour
 
     private void PowerDownEvent()
     {
-        GameObject firstActive = greens.FirstOrDefault();
+        GameObject firstActive = greens.FirstOrDefault(g => g.activeSelf);
         if (firstActive != null)
         {
             firstActive.SetActive(false);
