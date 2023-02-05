@@ -52,6 +52,7 @@ public class RootSpawnManager : MonoBehaviour
     private void OnTakeFromPool(PooledGameObject obj)
     {
         obj.transform.SetPositionAndRotation(transform.position, transform.rotation);
+        obj.transform.localScale = Vector3.one;
         SpriteRenderer spawnedSpriteRenderer = obj.GetComponent<SpriteRenderer>();
         spawnedSpriteRenderer.sprite = spawnPrefabSpriteRenderer.sprite;
         spawnedSpriteRenderer.color = spawnPrefabSpriteRenderer.color;

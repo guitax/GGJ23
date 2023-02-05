@@ -1,12 +1,11 @@
-using System.Collections;
 using UnityEngine;
 
 public class RootGrowthManager : MonoBehaviour
 {
     [SerializeField]
-    private float waitingTime = 3f;
+    private float growthProbability = 0.1f;
     [SerializeField]
-    private float probability = 0.1f;
+    private float shrinkProbability = 0.1f;
     [SerializeField]
     private Sprite[] grownRootSprites;
 
@@ -19,26 +18,22 @@ public class RootGrowthManager : MonoBehaviour
 
     private void OnEnable()
     {
-        StartCoroutine(ChangeSpriteAfterWaiting());
+        ChangeSprite();
     }
 
-    private IEnumerator ChangeSpriteAfterWaiting()
+    private void ChangeSprite()
     {
-        yield return new WaitForSeconds(waitingTime);
-        StartCoroutine(ChangeSprite());
-    }
-
-    private IEnumerator ChangeSprite()
-    {
-        if (GameRandom.Core.NextFloat(1f) < probability)
+        float random = GameRandom.Core.NextFloat(1f);
+        if (random < growthProbability)
         {
+            Debug.Log("Growth");
             spriteRenderer.sprite = GameRandom.Core.NextElement(grownRootSprites);
+            transform.localScale = new Vector3(GameRandom.Core.NextFloat(0.8f, 1f), 1f, 1f);
         }
-        else
+        else if (random < shrinkProbability)
         {
+            Debug.Log("Shrink");
             spriteRenderer.color = Color.clear;
         }
-
-        yield return null;
     }
 }
